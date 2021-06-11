@@ -1,0 +1,81 @@
+/---------------------------------------------------------------------
+/ TELEMAC2D Version v8p2 Dec 18, 2022
+/ STEADY HYDRODYNAMICS TRAINING
+/---------------------------------------------------------------------
+
+/ steady2d.cas
+/------------------------------------------------------------------/
+/			COMPUTATION ENVIRONMENT
+/------------------------------------------------------------------/
+TITLE : 'TELEMAC 3D FLUME'
+/
+BOUNDARY CONDITIONS FILE : boundaries.cli
+GEOMETRY FILE            : qgismesh.slf
+RESULTS FILE           : r2dsteady.slf
+/
+VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F
+/
+/------------------------------------------------------------------/
+/			GENERAL PARAMETERS
+/------------------------------------------------------------------/
+TIME STEP : 1.
+NUMBER OF TIME STEPS : 8000
+GRAPHIC PRINTOUT PERIOD : 100
+LISTING PRINTOUT PERIOD : 100
+/
+/------------------------------------------------------------------/
+/			NUMERICAL PARAMETERS
+/------------------------------------------------------------------/
+/
+/ CONVECTION-DIFFUSION
+/------------------------------------------------------------------
+DISCRETIZATIONS IN SPACE : 11;11
+TYPE OF ADVECTION : 1;5;1;1
+ADVECTION : YES
+/
+SUPG OPTION : 0;0;2;2  / classic supg for U and V  see docs sec 6.2.2
+/
+/ PROPAGATION HEIGHT AND STABILITY
+/ ------------------------------------------------------------------
+IMPLICITATION FOR DEPTH : 0.55 / should be between 0.55 and 0.6
+IMPLICITATION FOR VELOCITY : 0.55 / should be between 0.55 and 0.6
+FREE SURFACE GRADIENT COMPATIBILITY : 0.1  / default 1.
+CONTINUITY CORRECTION : YES
+TREATMENT OF THE LINEAR SYSTEM : 2
+MASS-BALANCE : YES
+MASS-LUMPING ON H : 1
+/ MATRIX STORAGE : 3
+/
+/ HYDRODYNAMIC SOLVER
+/------------------------------------------------------------------
+INFORMATION ABOUT SOLVER : YES
+SOLVER : 1
+MAXIMUM NUMBER OF ITERATIONS FOR SOLVER = 200
+TIDAL FLATS : YES
+/
+/ BOUNDARY CONDITIONS
+/------------------------------------------------------------------
+LAW OF BOTTOM FRICTION : 4 / 4-Manning
+FRICTION COEFFICIENT : 0.03 / Roughness coefficient
+/
+/ Liquid boundaries
+PRESCRIBED FLOWRATES  : 35.;35.
+PRESCRIBED ELEVATIONS : 0.;371.33
+/
+/ INITIAL CONDITIONS
+/ ------------------------------------------------------------------
+INITIAL CONDITIONS : 'CONSTANT DEPTH'
+INITIAL DEPTH : 1 / INTEGER for speeding up calculations
+/
+/ Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to root (water depth, only for Q) 5-vector is proportional to root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
+VELOCITY PROFILES : 4;1
+/
+/------------------------------------------------------------------/
+/			TURBULENCE
+/------------------------------------------------------------------/
+/ 
+TURBULENCE MODEL : 1
+
+
+&ETA
+
