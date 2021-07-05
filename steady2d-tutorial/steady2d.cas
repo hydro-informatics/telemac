@@ -84,13 +84,17 @@ FRICTION COEFFICIENT : 0.03 / Roughness coefficient
 PRESCRIBED FLOWRATES  : 35.;35.
 PRESCRIBED ELEVATIONS : 0.;371.33
 /
-/ INITIAL CONDITIONS
-/ ------------------------------------------------------------------
-INITIAL CONDITIONS : 'CONSTANT DEPTH'
-INITIAL DEPTH : 1 / INTEGER for speeding up calculations
-/
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to root (water depth, only for Q) 5-vector is proportional to root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
 VELOCITY PROFILES : 4;1
+/
+/ INITIAL CONDITIONS
+/ ------------------------------------------------------------------
+INITIAL CONDITIONS : 'CONSTANT DEPTH' / use ZERO DEPTH to start with dry model conditions
+INITIAL DEPTH : 1 / INTEGER for speeding up calculations
+/
+/ STABILITY CONTROLS
+/ ------------------------------------------------------------------
+PRINTING CUMULATED FLOWRATES : YES
 /
 /------------------------------------------------------------------/
 /			TURBULENCE
