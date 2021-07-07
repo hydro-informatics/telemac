@@ -33,10 +33,11 @@ FREE SURFACE GRADIENT COMPATIBILITY : 0.1 / default is 1.
 ADVECTION : YES
 /
 / STABILITY CONTROLS
-DESIRED COURANT NUMBER : 0.9
-/ VARIABLE TIME-STEP : YES / default is NO
+PRINTING CUMULATED FLOWRATES : YES
+/ DESIRED COURANT NUMBER : 0.9 / use with finite volumes only
+/ VARIABLE TIME-STEP : YES /use with finite volumes only - default is NO
 / STOP IF A STEADY STATE IS REACHED : YES / default is NO
-/ STOP CRITERIA : 1.E-3;1.E-2;1.E-2 / for U,V,T
+/ STOP CRITERIA : 1.E-3;1.E-3;1.E-3 / for U,V,T
 / CONTROL OF LIMITS : YES / avoids divergence - default is NO
 / LIMIT VALUES : -1000;9000;-1000;1000;-1000;1000;-1000;1000 / integer list for min max of H, U, V, tracer
 /
@@ -95,10 +96,6 @@ VELOCITY PROFILES : 4;1
 / ------------------------------------------------------------------
 INITIAL CONDITIONS : 'CONSTANT DEPTH' / use ZERO DEPTH to start with dry model conditions
 INITIAL DEPTH : 1 / INTEGER for speeding up calculations
-/
-/ STABILITY CONTROLS
-/ ------------------------------------------------------------------
-PRINTING CUMULATED FLOWRATES : YES
 /
 /------------------------------------------------------------------/
 /			TURBULENCE - see section 6.2
