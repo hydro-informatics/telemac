@@ -1,0 +1,119 @@
+/---------------------------------------------------------------------
+/ TELEMAC2D Version v8p2
+/ STEADY HYDRODYNAMICS TRAINING
+/---------------------------------------------------------------------
+
+/ unsteady2d.cas
+/------------------------------------------------------------------/
+/			COMPUTATION ENVIRONMENT
+/------------------------------------------------------------------/
+TITLE : '2d unsteady'
+COMPUTATION CONTINUED = YES / build on top of a steady flow initialization
+/
+/ INPUT FILES
+/------------------------------------------------------------------
+BOUNDARY CONDITIONS FILE : boundaries.cli
+GEOMETRY FILE : qgismesh.slf
+RESULTS FILE : r2dunsteady.slf
+/
+/ additional input files for unsteady calculation
+PREVIOUS COMPUTATION FILE : r2dsteady.slf / here - 35 CMS initialization
+LIQUID BOUNDARIES FILE : inflows.liq
+STAGE-DISCHARGE CURVES : 0;1
+STAGE-DISCHARGE CURVES FILE ='ratingcurve.txt'
+/
+MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
+VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
+/
+/------------------------------------------------------------------/
+/			GENERAL PARAMETERS
+/------------------------------------------------------------------/
+TIME STEP : 1.
+NUMBER OF TIME STEPS : 20000
+GRAPHIC PRINTOUT PERIOD : 500
+LISTING PRINTOUT PERIOD : 200
+DURATION : 20000
+/
+/------------------------------------------------------------------/
+/			NUMERICAL PARAMETERS
+/------------------------------------------------------------------/
+/ General solver parameters - see section 7.1
+DISCRETIZATIONS IN SPACE : 11;11
+FREE SURFACE GRADIENT COMPATIBILITY : 0.1 / default is 1.
+ADVECTION : YES
+/
+/ STABILITY CONTROLS
+PRINTING CUMULATED FLOWRATES : YES
+/ DESIRED COURANT NUMBER : 0.9 / use with finite volumes only
+/ VARIABLE TIME-STEP : YES /use with finite volumes only - default is NO
+/ STOP IF A STEADY STATE IS REACHED : YES / default is NO
+/ STOP CRITERIA : 1.E-3;1.E-3;1.E-3 / for U,V,T
+/ CONTROL OF LIMITS : YES / avoids divergence - default is NO
+/ LIMIT VALUES : -1000;9000;-1000;1000;-1000;1000;-1000;1000 / integer list for min max of H, U, V, tracer
+/
+/ FINITE ELEMENT SCHEME PARAMETERS - section 7.2.1 in the manual
+/------------------------------------------------------------------
+TREATMENT OF THE LINEAR SYSTEM : 2 / default is 2 - use 1 to avoid smoothened results
+SCHEME FOR ADVECTION OF VELOCITIES : 14 / alternatively keep 1
+SCHEME FOR ADVECTION OF TRACERS : 5
+SCHEME FOR ADVECTION OF K-EPSILON : 14
+IMPLICITATION FOR DEPTH : 0.55 / should be between 0.55 and 0.6
+IMPLICITATION FOR VELOCITY : 0.55 / should be between 0.55 and 0.6
+IMPLICITATION FOR DIFFUSION OF VELOCITY : 1. / v8p2 default
+IMPLICITATION COEFFICIENT OF TRACERS : 0.6 / v8p2 default
+MASS-LUMPING ON H : 1.
+MASS-LUMPING ON VELOCITY : 1.
+MASS-LUMPING ON TRACERS : 1.
+/ MASS-LUMPING FOR WEAK CHARACTERISTICS : 1. / enabling leads to weak characteristics
+SUPG OPTION : 0;0;2;2 / classic supg for U and V 
+/
+/ SOLVER - see section 7.3.1
+/------------------------------------------------------------------
+INFORMATION ABOUT SOLVER : YES
+SOLVER : 1
+/ SOLVER ACCURACY : 1.E-4 / propagation steps
+/ ACCURACY FOR DIFFUSION OF TRACERS : 1.E-4 / tracer diffusion
+/ ACCURACY OF K : 1.E-6 / diffusion and source terms of turbulent energy transport
+/ ACCURACY OF EPSILON : 1.E-6 / diffusion and source terms of turbulent dissipation transport
+/ ACCURACY OF SPALART-ALLMARAS : 1.E-6 / diffusion and source terms of the Spalart-Allmaras equation
+MAXIMUM NUMBER OF ITERATIONS FOR SOLVER : 200 / maximum number of iterations when solving the propagation step
+MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF TRACERS : 60 / tracer diffusion
+MAXIMUM NUMBER OF ITERATIONS FOR K AND EPSILON : 50 / diffusion and source terms of k-e
+/
+/ TIDAL FLATS - see section 7.5
+TIDAL FLATS : YES
+CONTINUITY CORRECTION : YES / default is NO
+OPTION FOR THE TREATMENT OF TIDAL FLATS : 1
+TREATMENT OF NEGATIVE DEPTHS : 2 / value 2 or 3 is required with tidal flats - default is 1
+/
+/ MATRIX HANDLING - see section 7.6
+MATRIX STORAGE : 3 / default is 3
+/
+/ BOUNDARY CONDITIONS
+/------------------------------------------------------------------
+/ Friction see section 6.1
+LAW OF BOTTOM FRICTION : 4 / 4-Manning
+FRICTION COEFFICIENT : 0.03 / Roughness coefficient
+OPTION FOR LIQUID BOUNDARIES : 1;1 / Procedure for over or under parameterized boundary conditions, must be defined for every BC(1-No change; 2-Thompson method) - see section 4.2.9
+/
+/ Liquid boundaries - see section 4.2
+PRESCRIBED FLOWRATES  : 35.;35.
+PRESCRIBED ELEVATIONS : 0.;371.33
+/
+/ Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to root (water depth, only for Q) 5-vector is proportional to root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
+VELOCITY PROFILES : 4;1
+/
+/ INITIAL CONDITIONS - see section 4.2
+/ ------------------------------------------------------------------
+INITIAL CONDITIONS : 'CONSTANT DEPTH' / use ZERO DEPTH to start with dry model conditions
+INITIAL DEPTH : 1 / INTEGER for speeding up calculations
+/
+/------------------------------------------------------------------/
+/			TURBULENCE - see section 6.2
+/------------------------------------------------------------------/
+/ 
+DIFFUSION OF VELOCITY : YES / default is YES
+TURBULENCE MODEL : 3
+
+&ETA
+
