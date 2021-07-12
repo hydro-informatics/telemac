@@ -1,0 +1,179 @@
+/---------------------------------------------------------------------
+/ TELEMAC2D Version v8p2
+/ STEADY HYDRODYNAMICS TRAINING 3d
+/---------------------------------------------------------------------
+/
+/ steady3d.cas
+/------------------------------------------------------------------/
+/			COMPUTATION ENVIRONMENT
+/------------------------------------------------------------------/
+/
+TITLE : '3d steady'
+MASS-BALANCE : YES
+/
+BOUNDARY CONDITIONS FILE : boundaries.cli
+GEOMETRY FILE            : qgismesh.slf
+/ GEOMETRY FILE FORMAT 	 : 'SLF'
+/ LIQUID BOUNDARIES FILE   : t3d_canal.qsl / sec. 4.3.8
+/ STAGE-DISCHARGE CURVES FILE :  / sec. 4.3.10
+3D RESULT FILE           : r3dsteady.slf
+3D RESULT FILE FORMAT    : 'SLF'
+2D RESULT FILE           : r2d3dsteady.med
+2D RESULT FILE FORMAT    : 'SLF'
+/ FILE FOR 2D CONTINUATION : r2dsteady.slf / sec. 3.1.1
+/ FILE FOR 2D CONTINUATION FORMAT : 'SLF'
+/
+VARIABLES FOR 2D GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
+VARIABLES FOR 3D GRAPHIC PRINTOUTS : Z,U,V,W
+/
+/------------------------------------------------------------------/
+/			GENERAL PARAMETERS
+/------------------------------------------------------------------/
+/
+/ 2D CONTINUATION : YES / enable to start off from 2d simulation
+TIME STEP : 1.
+NUMBER OF TIME STEPS : 8000
+GRAPHIC PRINTOUT PERIOD : 500
+LISTING PRINTOUT PERIOD : 200
+/
+/------------------------------------------------------------------/
+/			VERTICAL
+/------------------------------------------------------------------/
+/ vertical cell height defined by initial condition x no. of levels
+/ will be adapted for every time step
+NUMBER OF HORIZONTAL LEVELS : 5 / default and minimum is 2, upward vertical direction
+MESH TRANSFORMATION : 1 / 0-CALCOT (user defined) 1-SIGMA (default) 3-user defined 
+ELEMENT : 'PRISM' / default is 'PRISM' but preferably use 'TETRAHEDRON'
+/
+/------------------------------------------------------------------/
+/			NUMERICAL PARAMETERS
+/------------------------------------------------------------------/
+/
+/ CONVECTION-DIFFUSION
+/------------------------------------------------------------------
+SCHEME FOR ADVECTION OF VELOCITIES : 5
+SCHEME FOR ADVECTION OF K-EPSILON : 5
+SCHEME FOR ADVECTION OF TRACERS : 5
+SCHEME OPTION FOR ADVECTION OF VELOCITIES : 4 / use 2 for without tidal flats for speed
+SCHEME OPTION FOR ADVECTION OF K-EPSILON : 4
+SCHEME OPTION FOR ADVECTION OF TRACERS : 4
+/
+MATRIX STORAGE : 3 / 1 (element-by-element), 3 (segment-wise faster)
+SUPG OPTION : 2;2;2;2  / classic supg for U and V  see docs sec 6.2.2
+/
+/ PROPAGATION HEIGHT AND STABILITY
+/ ------------------------------------------------------------------
+IMPLICITATION FOR DEPTH : 0.55 / should be between 0.55 and 0.6
+IMPLICITATION FOR VELOCITIES : 0.55 / should be between 0.55 and 0.6
+IMPLICITATION FOR DIFFUSION : 1.
+FREE SURFACE GRADIENT COMPATIBILITY : 0.1  / default 1.
+/
+/ MASS LUMPING - enable to fasten calculations (smoothens) - possibly avoid in 3d
+/ ------------------------------------------------------------------
+/ MASS-LUMPING FOR DIFFUSION : 1 / 1 is ON - 0 is OFF (default)
+/ MASS-LUMPING FOR DEPTH : 1.  / VELOCITY has no effect
+/ MASS-LUMPING FOR WEAK CHARACTERISTICS : 1
+/
+/------------------------------------------------------------------/
+/			HYDRODYNAMICS
+/------------------------------------------------------------------/  
+/
+/ HYDRODYNAMIC SOLVER
+/------------------------------------------------------------------
+NON-HYDROSTATIC VERSION : YES
+/ solver options are
+/ 1-conjugate method 2-conjugate residual method 3-conjugate gradient
+/ 4-minimum error 5-square conjugate gradient 6-stabilized conjugate gradient CGSTAB
+/ 7-Generalised Minimum RESidual GMRES is the favorite for improperly conditioned systems - RECOMMENDED in 3d
+/ 8-direct solver YSMP (Yale) is not working with parallel versions
+SOLVER FOR DIFFUSION OF VELOCITIES : 1 / 1-default
+SOLVER FOR PROPAGATION : 7 / 7-default
+SOLVER FOR PPE : 7 / 7-default
+/ SOLVER FOR DIFFUSION OF TRACERS : 1 / one value per tracer
+SOLVER FOR DIFFUSION OF K-EPSILON : 1 / 1-default
+/
+/ Set OPTIONS for GMRES
+/ Increasing values for precision, but also more memory consumption
+OPTION OF SOLVER FOR DIFFUSION OF VELOCITIES : 5 / 5-default since v8
+OPTION OF SOLVER FOR PROPAGATION : 5 / 5-default since v8
+OPTION OF SOLVER FOR PPE : 5 / 5-default since v8
+/ OPTION OF SOLVER FOR DIFFUSION OF TRACERS : 5 / 5-default since v8
+OPTION OF SOLVER FOR DIFFUSION OF K-EPSILON : 5 / 5-default since v8
+/
+/ Solver ACCURACY
+ACCURACY FOR DIFFUSION OF VELOCITIES : 1.E-8 / default is 1.E-8
+ACCURACY FOR PROPAGATION : 1.E-8 / default is 1.E-8
+ACCURACY FOR PPE : 1.E-6 / default is 1.E-8
+/ ACCURACY FOR DIFFUSION OF TRACERS : 1.E-8 / default is 1.E-8
+ACCURACY FOR DIFFUSION OF K-EPSILON : 1.E-8 / default is 1.E-8
+/
+/ Solver MAXIMUM ITERATIONS
+MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF VELOCITIES : 100 / default is 60
+MAXIMUM NUMBER OF ITERATIONS FOR PROPAGATION : 200 / default is 100
+MAXIMUM NUMBER OF ITERATIONS FOR PPE : 100 / default is 100
+/ MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF TRACERS : 100 / default is 60
+MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF K-EPSILON : 150 / default is 200
+/ MAXIMUM NUMBER OF ITERATIONS FOR ADVECTION SCHEMES : 10 / default is 10 - only with schemes 13 and 14
+/
+/ PRECONDITIONING - DEFAULT Value is 2 for all
+/ 0-no prec. 2-diagonal 3-diagonal with condensed matrix 5-diagonal with absolute values
+/ 7-Crout downgrad in parallel 11-Gauss-Seidel downgraded in parallel
+/ 13-user defined 14-cumulated diagonal and Crout 17-use direct solution along vertical direction
+/ 21-cumulated diagonal with condensed matrix and Crout 34-cumulated diagonal along vert. direction
+PRECONDITIONING FOR DIFFUSION OF VELOCITIES : 2
+PRECONDITIONING FOR PROPAGATION : 2
+PRECONDITIONING FOR PPE : 2
+PRECONDITIONING FOR DIFFUSION OF TRACERS : 2
+PRECONDITIONING FOR DIFFUSION OF K-EPSILON : 2
+/
+/ BOUNDARY CONDITIONS
+/------------------------------------------------------------------
+/ Use Nikuradse roughness law - all others are not 3D compatible
+LAW OF BOTTOM FRICTION : 5
+LAW OF FRICTION ON LATERAL BOUNDARIES : 5  / for natural banks - 0 for symmetry
+FRICTION COEFFICIENT FOR THE BOTTOM : 0.1 / 3 times d90 according to van Rijn
+/ FRICTION COEFFICIENT FOR LATERAL SOLID BOUNDARIES : 0.1  / similar to bottom
+/
+/ Liquid boundaries - avoid Thompson (invalid in 3d)
+PRESCRIBED FLOWRATES  : 35.;35.
+PRESCRIBED ELEVATIONS : 0.;371.33
+/
+/ INITIAL CONDITIONS
+/ ------------------------------------------------------------------
+INITIAL CONDITIONS : 'CONSTANT DEPTH' / or CONSTANT DEPTH see docs sec. 4.2
+/ INITIAL ELEVATION : 374. / corresponds to depth here - not in boundary file 
+INITIAL DEPTH : 0.1
+INITIAL GUESS FOR DEPTH : 1 / INTEGER for speeding up calculations
+/
+/ Other
+/------------------------------------------------------------------
+VELOCITY VERTICAL PROFILES : 2;2 / 0 (user-defined), 1 (Constant), 2 (Log)
+VELOCITY PROFILES : 1;1 / horizontal profile
+/
+/------------------------------------------------------------------/
+/			TIDAL FLATS
+/------------------------------------------------------------------/
+TIDAL FLATS : YES / default is YES - disable for faster model runs
+/ TREATMENT OF NEGATIVE DEPTHS : 2 / requires mass lumping for depth set to 1
+TREATMENT ON TIDAL FLATS FOR TRACERS : 1 / ensure conservation
+/ more in section docs 6.6
+/
+/------------------------------------------------------------------/
+/			TURBULENCE
+/------------------------------------------------------------------/
+/ in 3d use k-epsilon model, alternatively Spalart-Allmaras (5) or 
+/  Smagorinsky (4) for highly non-linear flow 
+HORIZONTAL TURBULENCE MODEL : 3
+VERTICAL TURBULENCE MODEL : 3
+MIXING LENGTH MODEL : 3 / telemac docs sec. 5.2.2
+COEFFICIENT FOR HORIZONTAL DIFFUSION OF VELOCITIES : 1.E-6 / is default
+COEFFICIENT FOR VERTICAL DIFFUSION OF VELOCITIES   : 1.E-6 / is default
+/
+/------------------------------------------------------------------/
+/			PARALLELISM
+/------------------------------------------------------------------/
+PARALLEL PROCESSORS : 0 / default is 0 - all others define number of processors
+/ PARTIONING TOOL : METIS / default is METIS, others are SCOTCH, PARMETIS, PTSCOTCH
+/
+/ ENABLE COMMAND PRINTS IN TERMINAL
+&ETA

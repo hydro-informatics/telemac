@@ -2,7 +2,7 @@
 / TELEMAC2D Version v8p2
 / STEADY HYDRODYNAMICS TRAINING
 /---------------------------------------------------------------------
-
+/
 / steady2d.cas
 /------------------------------------------------------------------/
 /			COMPUTATION ENVIRONMENT
@@ -105,6 +105,6 @@ INITIAL DEPTH : 1 / INTEGER for speeding up calculations
 / 
 DIFFUSION OF VELOCITY : YES / default is YES
 TURBULENCE MODEL : 3
-
+/
+/ ENABLE COMMAND PRINTS IN TERMINAL
 &ETA
-
