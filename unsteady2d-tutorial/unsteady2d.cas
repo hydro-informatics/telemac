@@ -7,8 +7,8 @@
 /------------------------------------------------------------------/
 /			COMPUTATION ENVIRONMENT
 /------------------------------------------------------------------/
-TITLE : '2d unsteady'
-COMPUTATION CONTINUED = YES / build on top of a steady flow initialization
+TITLE : '2d unsteady - quasi steady'
+COMPUTATION CONTINUED : YES / build on top of a steady flow initialization
 /
 / INPUT FILES
 /------------------------------------------------------------------
@@ -98,7 +98,7 @@ MATRIX STORAGE : 3 / default is 3
 / Friction see section 6.1
 LAW OF BOTTOM FRICTION : 4 / 4-Manning
 FRICTION COEFFICIENT : 0.03 / Roughness coefficient
-OPTION FOR LIQUID BOUNDARIES : 1;1 / Procedure for over or under parameterized boundary conditions, must be defined for every BC(1-No change; 2-Thompson method) - see section 4.2.9
+OPTION FOR LIQUID BOUNDARIES : 1;1 / Procedure for over or under parameterized boundary conditions, define for every BC(1-Default; 2-Thompson method) - see section 4.2.9
 /
 / Liquid boundaries - see section 4.2
 / PRESCRIBED FLOWRATES  : 35.;35.
@@ -118,6 +118,7 @@ VELOCITY PROFILES : 4;1
 / 
 DIFFUSION OF VELOCITY : YES / default is YES
 TURBULENCE MODEL : 3
-
+/
+/ ENABLE COMMAND PRINTS IN TERMINAL
 &ETA
 
