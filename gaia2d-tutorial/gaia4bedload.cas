@@ -1,0 +1,43 @@
+/-----------------------------------------------------------------------
+/     GAIA STEERING FILE
+/-----------------------------------------------------------------------
+BOUNDARY CONDITIONS FILE                     = boundaries.cli
+GEOMETRY FILE                                = qgismesh.slf
+RESULTS FILE                                 = rGaiaSteady2d.slf
+DEBUGGER = 0
+/-----------------------------------------------------------------------
+/ OUTPUT
+/-----------------------------------------------------------------------
+VARIABLES FOR GRAPHIC PRINTOUTS              = 'U,V,S,H,B,E'
+MASS-BALANCE                                 = YES
+/-----------------------------------------------------------------------
+/ NUMERICAL OPTIONS
+/-----------------------------------------------------------------------
+FINITE VOLUMES                               = NO
+/-----------------------------------------------------------------------
+/ PHYSICAL OPTIONS
+/-----------------------------------------------------------------------
+NUMBER OF LAYERS FOR INITIAL STRATIFICATION  = 1
+CLASSES TYPE OF SEDIMENT = CO
+CLASSES SEDIMENT DENSITY = 1600
+CLASSES SEDIMENT DIAMETERS = 0.00006
+FORMULA FOR SLOPE EFFECT                     = 0
+FORMULA FOR DEVIATION                        = 0
+SEDIMENT SLIDE                               = NO
+LAYERS MUD CONCENTRATION = 100.
+LAYERS CRITICAL EROSION SHEAR STRESS OF THE MUD = 0.1
+CLASSES CRITICAL SHEAR STRESS FOR MUD DEPOSITION = 1000.D0
+/ CASES
+/ EROSION AND DEPOSITION CASE
+CLASSES SETTLING VELOCITIES = 0.01
+LAYERS PARTHENIADES CONSTANT = 1.D-03
+/
+/ NO EROSION CASE
+/LAYERS PARTHENIADES CONSTANT = 0.D0
+/CLASSES SETTLING VELOCITIES = 0.01
+/
+/ NO DEPOSITION CASE
+/LAYERS PARTHENIADES CONSTANT = 1.D-03
+/CLASSES SETTLING VELOCITIES = 0.0
+/
+SKIN FRICTION CORRECTION                     = 0
