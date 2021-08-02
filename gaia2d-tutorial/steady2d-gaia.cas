@@ -14,7 +14,7 @@ COMPUTATION CONTINUED : YES / build on top of a steady flow initialization
 PREVIOUS COMPUTATION FILE : r2dsteady.slf / here - 35 CMS initialization after t 15000
 INITIAL TIME SET TO ZERO : YES / avoid restarting at 15000
 /
-GAIA STEERING FILE : gaia4bedload.cas
+GAIA STEERING FILE : gaia-morphodynamics.cas
 /
 / DEFAULTS FROM STEADY2D
 /
