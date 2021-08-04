@@ -24,7 +24,7 @@ GAIA STEERING FILE : gaia-morphodynamics.cas
 /
 BOUNDARY CONDITIONS FILE : boundaries.cli
 GEOMETRY FILE            : qgismesh.slf
-RESULTS FILE           : 'r2dsteady.slf'
+RESULTS FILE           : r2dsteady.slf
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
 VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls

@@ -32,8 +32,28 @@ BED LOAD FOR ALL SANDS : YES / deactivate with NO
 BED-LOAD TRANSPORT FORMULA FOR ALL SANDS : 1 / MPM - see table for more
 SHIELDS PARAMETERS : 0.047
 MPM COEFFICIENT : 8
+/
+/ BEDLOAD DIRECTION - manual sec. 3.1.4-3.1.7
+SLOPE EFFECT : 1 / default is 1 - enabled
+FORMULA FOR DEVIATION : 1 / use 2 for talmon-1995 approach
+/ PARAMETER FOR DEVIATION : 1.6 / default is 0.85 - requires formula=2 
+FORMULA FOR SLOPE EFFECT : 1 / default is 1 (koch-flokstra) change to 2 for soulsby
+BETA : 1.3 / only with koch-flokstra - default is 1.3
+/ FRICTION ANGLE OF THE SEDIMENT : 40. / only with soulsby - default is 40.0 degrees
+/
+/ SECONDARY CURRENTS - manual sec. 3.1.7
+SECONDARY CURRENTS : YES / default is no
+SECONDARY CURRENTS ALPHA COEFFICIENT : 0.8 / default is 1.
+/
+/ BEDLOAD CALIBRATION
+SKIN FRICTION CORRECTION : 1 / set 0 to disable correction in shallow waters
 
+/ BEDFORM FRICTION FOR SANDS - manual section 3.1.8
+/ COMPUTE BED ROUGHNESS AT SEDIMENT SCALE : YES / default is NO
+/ BED ROUGHNESS PREDICTOR OPTION : 2 / default is 1
 
+/ SUSPENDED LOAD
+/------------------------------------------------------------------/
 SUSPENSION FOR ALL SANDS : 
 
 NUMBER OF LAYERS FOR INITIAL STRATIFICATION : 1
