@@ -14,6 +14,7 @@ COMPUTATION CONTINUED : YES / build on top of a steady flow initialization
 PREVIOUS COMPUTATION FILE : r2dsteady.slf / here - 35 CMS initialization after t 15000
 INITIAL TIME SET TO ZERO : YES / avoid restarting at 15000
 /
+COUPLING WITH : 'GAIA'
 GAIA STEERING FILE : gaia-morphodynamics.cas
 /
 / DEFAULTS FROM STEADY2D
@@ -24,7 +25,7 @@ GAIA STEERING FILE : gaia-morphodynamics.cas
 /
 BOUNDARY CONDITIONS FILE : boundaries.cli
 GEOMETRY FILE            : qgismesh.slf
-RESULTS FILE           : r2dsteady.slf
+RESULTS FILE           : r2dsteady-gaia.slf
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
 VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
