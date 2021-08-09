@@ -14,7 +14,7 @@ GEOMETRY FILE            : qgismesh.slf
 RESULTS FILE           : 'r2dsteady-dryinit.slf'
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
-VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
+VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F,B / Q enables boundary flux equilibrium controls
 /
 /------------------------------------------------------------------/
 /			GENERAL PARAMETERS
