@@ -49,7 +49,7 @@ ELEMENT : 'PRISM' / default is 'PRISM' but preferably use 'TETRAHEDRON'
 /			NUMERICAL PARAMETERS
 /------------------------------------------------------------------/
 /
-/ CONVECTION-DIFFUSION
+/ ADVECTION-DIFFUSION
 /------------------------------------------------------------------
 SCHEME FOR ADVECTION OF VELOCITIES : 5
 SCHEME FOR ADVECTION OF K-EPSILON : 5
