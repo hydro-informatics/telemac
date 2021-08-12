@@ -1,9 +1,7 @@
 # Control sections definition
-3 -1
+2 -1
 Inflow_boundary
-144 32
+32 144
 Outflow_boundary
 34 5 
-Outflow_boundary2
-312 324 
 
