@@ -40,16 +40,16 @@ SECTIONS OUTPUT FILE : r-control-flows.txt
 /------------------------------------------------------------------/
 TIME STEP : 1.
 NUMBER OF TIME STEPS : 50000
-GRAPHIC PRINTOUT PERIOD : 5000
-LISTING PRINTOUT PERIOD : 5000
+GRAPHIC PRINTOUT PERIOD : 2000
+LISTING PRINTOUT PERIOD : 2000
 /
 /------------------------------------------------------------------/
 /			NUMERICAL PARAMETERS
 /------------------------------------------------------------------/
 / General solver parameters from section 7.1
 DISCRETIZATIONS IN SPACE : 11;11
-FREE SURFACE GRADIENT COMPATIBILITY : 0.1  / default 1.
-ADVECTION : YES
+/ FREE SURFACE GRADIENT COMPATIBILITY : 0.1  / default 1.
+/ ADVECTION : YES
 /
 / STABILITY CONTROLS
 / DESIRED COURANT NUMBER : 0.9
@@ -82,9 +82,9 @@ SOLVER : 1
 / ACCURACY OF K : 1.E-6 / diffusion and source terms of turbulent energy transport
 / ACCURACY OF EPSILON : 1.E-6 / diffusion and source terms of turbulent dissipation transport
 / ACCURACY OF SPALART-ALLMARAS : 1.E-6 / diffusion and source terms of the Spalart-Allmaras equation
-MAXIMUM NUMBER OF ITERATIONS FOR SOLVER : 200 / maximum number of iterations when solving the propagation step
-MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF TRACERS : 60 / tracer diffusion
-MAXIMUM NUMBER OF ITERATIONS FOR K AND EPSILON : 50 / diffusion and source terms of k-e
+/ MAXIMUM NUMBER OF ITERATIONS FOR SOLVER : 200 / maximum number of iterations when solving the propagation step
+/ MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF TRACERS : 60 / tracer diffusion
+/ MAXIMUM NUMBER OF ITERATIONS FOR K AND EPSILON : 50 / diffusion and source terms of k-e
 /
 / TIDAL FLATS  - see section 7.5
 TIDAL FLATS : YES
@@ -102,11 +102,11 @@ LAW OF BOTTOM FRICTION : 4 / 4-Manning
 FRICTION COEFFICIENT : 0.03 / Roughness coefficient
 /
 / Liquid boundaries
-PRESCRIBED FLOWRATES  : 35.;35.
-/ PRESCRIBED ELEVATIONS : 374.805626;0.
+PRESCRIBED FLOWRATES  : 35.;0.
+PRESCRIBED ELEVATIONS : 0.;371.335
 /
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to root (water depth, only for Q) 5-vector is proportional to root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
-VELOCITY PROFILES : 4;1
+VELOCITY PROFILES : 4;4
 /
 / INITIAL CONDITIONS - not required (hotstart)
 / ------------------------------------------------------------------
