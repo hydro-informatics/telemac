@@ -9,7 +9,7 @@
 /------------------------------------------------------------------/
 TITLE : '2d steady'
 /
-BOUNDARY CONDITIONS FILE : boundaries-555.cli
+BOUNDARY CONDITIONS FILE : boundaries-dry.cli
 GEOMETRY FILE            : qgismesh.slf
 RESULTS FILE           : 'r2dsteady-dryinit.slf'
 /
@@ -83,8 +83,8 @@ LAW OF BOTTOM FRICTION : 4 / 4-Manning
 FRICTION COEFFICIENT : 0.03 / Roughness coefficient
 /
 / Liquid boundaries
-PRESCRIBED FLOWRATES  : 35.;35.
-PRESCRIBED ELEVATIONS : 374.805626;371.33
+PRESCRIBED FLOWRATES  : 35.;0.
+PRESCRIBED ELEVATIONS : 374.80565;371.33
 /
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to root (water depth, only for Q) 5-vector is proportional to root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
 VELOCITY PROFILES : 4;1
