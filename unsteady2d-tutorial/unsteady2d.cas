@@ -47,7 +47,7 @@ PRINTING CUMULATED FLOWRATES : YES
 SECTIONS INPUT FILE : control-sections.txt / define control sections at the upstream and downstream boundaries - see docs section 5.2.2
 SECTIONS OUTPUT FILE : r-control-sections.txt
 / FLUXLINE : YES
-/ DESIRED COURANT NUMBER : 0.9 / use with finite volumes only
+/ DESIRED COURANT NUMBER : 0.9 / must not be greater than 0.9
 / VARIABLE TIME-STEP : YES /use with finite volumes only - default is NO
 / STOP IF A STEADY STATE IS REACHED : YES / default is NO
 / STOP CRITERIA : 1.E-3;1.E-3;1.E-3 / for U,V,T

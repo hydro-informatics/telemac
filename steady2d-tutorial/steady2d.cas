@@ -36,7 +36,7 @@ ADVECTION : YES
 /
 / STABILITY CONTROLS
 PRINTING CUMULATED FLOWRATES : YES
-/ DESIRED COURANT NUMBER : 0.9 / use with finite volumes only
+/ DESIRED COURANT NUMBER : 0.9 / must not be greater than 0.9
 / VARIABLE TIME-STEP : YES /use with finite volumes only - default is NO
 / STOP IF A STEADY STATE IS REACHED : YES / default is NO
 / STOP CRITERIA : 1.E-3;1.E-3;1.E-3 / for U,V,T
