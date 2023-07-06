@@ -4,9 +4,9 @@
 /---------------------------------------------------------------------
 /
 / unsteady2d.cas
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 /			COMPUTATION ENVIRONMENT
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 TITLE : '2d unsteady - quasi steady'
 COMPUTATION CONTINUED : YES / build on top of a steady flow initialization
 /
@@ -26,17 +26,17 @@ NUMBER OF CORRECTIONS OF DISTRIBUTIVE SCHEMES : 2
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
 VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
 /
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 /			GENERAL PARAMETERS
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 TIME STEP : 1.
 NUMBER OF TIME STEPS : 15000
 GRAPHIC PRINTOUT PERIOD : 500
 LISTING PRINTOUT PERIOD : 500
 /
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 /			NUMERICAL PARAMETERS
-/------------------------------------------------------------------/
+/------------------------------------------------------------------
 / General solver parameters - see section 7.1
 DISCRETIZATIONS IN SPACE : 11;11
 FREE SURFACE GRADIENT COMPATIBILITY : 0.1 / default is 1.
@@ -95,9 +95,14 @@ MATRIX STORAGE : 3 / default is 3
 /
 / BOUNDARY CONDITIONS
 /------------------------------------------------------------------
-/ Friction see section 6.1
+/
+/ Friction at the bed - see section 6.1
 LAW OF BOTTOM FRICTION : 4 / 4-Manning
 FRICTION COEFFICIENT : 0.03 / Roughness coefficient
+/ Friction at the boundaries
+LAW OF FRICTION ON LATERAL BOUNDARIES : 4 / 4-Manning
+ROUGHNESS COEFFICIENT OF BOUNDARIES : 0.03 / Roughness coefficient
+/
 OPTION FOR LIQUID BOUNDARIES : 1;1 / Procedure for over or under parameterized boundary conditions, define for every BC(1-Default; 2-Thompson method) - see section 4.2.9
 /
 / Liquid boundaries - see section 4.2
@@ -112,9 +117,9 @@ VELOCITY PROFILES : 4;1
 / INITIAL CONDITIONS : 'CONSTANT DEPTH' / use ZERO DEPTH to start with dry model conditions
 / INITIAL DEPTH : 1 / INTEGER for speeding up calculations
 /
-/------------------------------------------------------------------/
+/-------------------------------------------------------------------
 /			TURBULENCE - see section 6.2
-/------------------------------------------------------------------/
+/-------------------------------------------------------------------
 / 
 DIFFUSION OF VELOCITY : YES / default is YES
 TURBULENCE MODEL : 3
