@@ -1,9 +1,9 @@
 /---------------------------------------------------------------------
-/ TELEMAC2D Version v8p2
+/ TELEMAC2D Version v8p4
 / STEADY HYDRODYNAMICS TRAINING
 /---------------------------------------------------------------------
 /
-/ steady2d.cas
+/ steady2d.cas for DRY INITIALIZATION
 /------------------------------------------------------------------
 /			COMPUTATION ENVIRONMENT
 /------------------------------------------------------------------
@@ -16,15 +16,17 @@ GEOMETRY FILE : qgismesh.slf
 RESULTS FILE : r2dsteady.slf
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
-VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F / Q enables boundary flux equilibrium controls
+VARIABLES FOR GRAPHIC PRINTOUTS : 'U,V,S,B,Q,F,H' / Q enables boundary flux equilibrium controls 
+PRINTING CUMULATED FLOWRATES : YES
 /
 /------------------------------------------------------------------
 /			GENERAL PARAMETERS
 /------------------------------------------------------------------
 TIME STEP : 1.
-NUMBER OF TIME STEPS : 10000
-GRAPHIC PRINTOUT PERIOD : 100
-LISTING PRINTOUT PERIOD : 100
+NUMBER OF TIME STEPS : 15000
+GRAPHIC PRINTOUT PERIOD : 500 / original use is 100, 500 was set to decrease results file size
+LISTING PRINTOUT PERIOD : 500 / original use is 100, 500 was set to decrease results file size
+LISTING FOR PRINTOUT PERIOD : 500 / original use is 100, 500 was set to decrease results file size
 /
 /------------------------------------------------------------------
 /			NUMERICAL PARAMETERS
@@ -62,6 +64,7 @@ SUPG OPTION : 0;0;2;2 / classic supg for U and V
 / SOLVER - see section 7.3.1
 /------------------------------------------------------------------
 INFORMATION ABOUT SOLVER : YES
+EQUATIONS : 'SAINT-VENANT FE'
 SOLVER : 1
 / SOLVER ACCURACY : 1.E-4 / propagation steps
 / ACCURACY FOR DIFFUSION OF TRACERS : 1.E-4 / tracer diffusion
@@ -86,7 +89,7 @@ MATRIX STORAGE : 3 / default is 3
 /
 / Liquid boundaries
 PRESCRIBED FLOWRATES  : 35.; 0.
-PRESCRIBED ELEVATIONS : 0.; 371.33
+PRESCRIBED ELEVATIONS : 374.80565; 371.33
 /
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to the root (water depth, only for Q) 5-vector is proportional to the root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
 VELOCITY PROFILES : 4;1
@@ -100,7 +103,7 @@ ROUGHNESS COEFFICIENT OF BOUNDARIES : 0.03 / Roughness coefficient
 /
 / INITIAL CONDITIONS - see section 4.2
 / ------------------------------------------------------------------
-INITIAL CONDITIONS : 'CONSTANT DEPTH' / use ZERO DEPTH to start with dry model conditions
+INITIAL CONDITIONS : 'ZERO DEPTH' / use ZERO DEPTH to start with dry model conditions
 INITIAL DEPTH : 1 / INTEGER for speeding up calculations
 /
 /------------------------------------------------------------------

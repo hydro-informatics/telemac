@@ -80,20 +80,18 @@ MATRIX STORAGE : 3 / default is 3
 /------------------------------------------------------------------
 /
 / Liquid boundaries
-PRESCRIBED FLOWRATES  : 35.; 0.
-PRESCRIBED ELEVATIONS : 0.; 371.33
+PRESCRIBED FLOWRATES  : 35.; 35.
+PRESCRIBED ELEVATIONS : 374.80565; 371.33
 /
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to the root (water depth, only for Q) 5-vector is proportional to the root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
 VELOCITY PROFILES : 4;1
 /
 / Friction at the bed
-FRICTION DATA : YES / default is NO
-FRICTION DATA FILE : 'BOTTOM FRICTION'
-MAXIMIM NUMBER OF FRICTION DOMAINS : 20 / default is 10
-
-
+/FRICTION DATA : YES / default is NO
+/FRICTION DATA FILE : 'BOTTOM FRICTION'
+/MAXIMIM NUMBER OF FRICTION DOMAINS : 20 / default is 10
 LAW OF BOTTOM FRICTION : 3 / 3-Strickler
-/ FRICTION COEFFICIENT : 30 / not use with zonal friction
+FRICTION COEFFICIENT : 70 / not use with zonal friction
 / Friction at the boundaries
 LAW OF FRICTION ON LATERAL BOUNDARIES : 4 / 4-Manning
 ROUGHNESS COEFFICIENT OF BOUNDARIES : 0.03 / Roughness coefficient
