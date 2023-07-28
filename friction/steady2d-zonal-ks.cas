@@ -1,28 +1,30 @@
 /---------------------------------------------------------------------
-/ TELEMAC2D Version v8p2
-/ STEADY HYDRODYNAMICS TRAINING
+/ TELEMAC2D Version v8p4
+/ STEADY HYDRODYNAMICS TRAINING for friction zones
 /---------------------------------------------------------------------
-
-/ steady2d.cas
+/ steady2d-zonal-ks.cas
 /------------------------------------------------------------------
 /			COMPUTATION ENVIRONMENT
 /------------------------------------------------------------------
-TITLE : '2d steady'
+TITLE : '2d steady with (Strickler) friction zones'
 /
 BOUNDARY CONDITIONS FILE : boundaries.cli
 GEOMETRY FILE            : qgismesh-friction.slf
-RESULTS FILE           : 'r2dsteady-zonal-ks.slf'
+RESULTS FILE             : r2dsteady-ks-zonal.slf
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
-VARIABLES FOR GRAPHIC PRINTOUTS : U,V,H,S,Q,F,B / Q enables boundary flux equilibrium controls
+VARIABLES FOR GRAPHIC PRINTOUTS : 'U,V,B,Q,F,H,W' / add K for tke, W for friction coefficient
+/
+COMPUTATION CONTINUED : YES
+PREVIOUS COMPUTATION FILE : r2dsteady-t15k.slf
 /
 /------------------------------------------------------------------
 /			GENERAL PARAMETERS
 /------------------------------------------------------------------
 TIME STEP : 1.
-NUMBER OF TIME STEPS : 15000
-GRAPHIC PRINTOUT PERIOD : 500
-LISTING PRINTOUT PERIOD : 500
+NUMBER OF TIME STEPS : 10000
+GRAPHIC PRINTOUT PERIOD : 1000
+LISTING PRINTOUT PERIOD : 100
 /
 /------------------------------------------------------------------
 /			NUMERICAL PARAMETERS
@@ -80,8 +82,8 @@ MATRIX STORAGE : 3 / default is 3
 /------------------------------------------------------------------
 /
 / Liquid boundaries
-PRESCRIBED FLOWRATES  : 35.; 35.
-PRESCRIBED ELEVATIONS : 374.80565; 371.33
+PRESCRIBED FLOWRATES  : 35.; 0.
+PRESCRIBED ELEVATIONS : 0.; 371.33
 /
 / Type of velocity profile can be 1-constant normal profile (default) 2-UBOR and VBOR in the boundary conditions file (cli) 3-vector in UBOR in the boundary conditions file (cli) 4-vector is proportional to the root (water depth, only for Q) 5-vector is proportional to the root (virtual water depth), the virtual water depth is obtained from a lower point at the boundary condition (only for Q)
 VELOCITY PROFILES : 4;1
@@ -91,14 +93,14 @@ VELOCITY PROFILES : 4;1
 /FRICTION DATA FILE : 'BOTTOM FRICTION'
 /MAXIMIM NUMBER OF FRICTION DOMAINS : 20 / default is 10
 LAW OF BOTTOM FRICTION : 3 / 3-Strickler
-FRICTION COEFFICIENT : 70 / not use with zonal friction
+FRICTION COEFFICIENT : 80 / not use with zonal friction
 / Friction at the boundaries
 LAW OF FRICTION ON LATERAL BOUNDARIES : 4 / 4-Manning
 ROUGHNESS COEFFICIENT OF BOUNDARIES : 0.03 / Roughness coefficient
 /
 / INITIAL CONDITIONS
 / ------------------------------------------------------------------
-INITIAL CONDITIONS : 'ZERO DEPTH' / use ZERO DEPTH to start with dry model conditions
+/ INITIAL CONDITIONS : 'ZERO DEPTH' / use ZERO DEPTH to start with dry model conditions
 / INITIAL DEPTH : 0.005 / use INTEGER for speeding up calculations
 /
 / STABILITY CONTROLS

@@ -23,9 +23,9 @@ PRINTING CUMULATED FLOWRATES : YES
 /			GENERAL PARAMETERS
 /------------------------------------------------------------------
 TIME STEP : 1.
-NUMBER OF TIME STEPS : 10000
-GRAPHIC PRINTOUT PERIOD : 50 / original use is 100, 500 was set to decrease results file size
-LISTING PRINTOUT PERIOD : 50 / original use is 100, 500 was set to decrease results file size
+NUMBER OF TIME STEPS : 15000
+GRAPHIC PRINTOUT PERIOD : 500 / original use is 100, 500 was set to decrease results file size
+LISTING PRINTOUT PERIOD : 500 / original use is 100, 500 was set to decrease results file size
 /
 /------------------------------------------------------------------
 /			NUMERICAL PARAMETERS
