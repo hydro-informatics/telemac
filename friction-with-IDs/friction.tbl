@@ -1,0 +1,41 @@
+* -----------------------------------------------------------------------------
+*  EXAMPLE ADAPTED FROM HOMETEL/examples/telemac2d/donau/
+* 
+*  Implemented roughness laws: 
+*    NOFR : no friction         (number of values) 
+*    HAAL : Haaland   law       (1 value  : rB) 
+*    CHEZ : Chezy     law       (1 value  : rB) 
+*    STRI : Strickler law       (1 value  : rB) 
+*    MANN : Manning   law       (1 value  : rB) 
+*    NIKU : Nikuradse law       (1 value  : rB) 
+*    LOGW : Log Wall  law       (1 value  : rB) 
+*    COWH : Colebrook-White law (2 values : rB, nDef) 
+* 
+*  no             : Nummer des Materialbereichs 
+* 
+*  Riverbed
+*  ------------- 
+*  typeB          : roughness law for riverbed
+*  rB             : friction value for riverbed
+*  nDefB          : Mannings n for shallow flow zones
+* 
+*  Later walls (only with k-epsilon model) 
+*  ----------------------------------------- 
+*  typeS          : roughness law for walls          (option) 
+*  rS             : friction value for walls         (option) 
+*  nDefS          : Mannings n for shallow waters    (option) 
+* 
+*  Non-submerged Vegetation (if needed) 
+*  ------------------------ 
+*  dp             : mean diameter                                (option) 
+*  sp             : averaged distance between roughness elements (option) 
+* 
+* ----------------------------------------------------------------------------- 
+* no        typeB  rB    NDefB  typeS  rS  NDefS   dp     sp 
+* 
+  0  STRI   33.0  NULL
+  1  STRI   34.6  NULL
+  2  STRI   27.7  NULL
+  3  STRI   40.3  NULL
+  4  STRI   22.7  NULL
+END 
