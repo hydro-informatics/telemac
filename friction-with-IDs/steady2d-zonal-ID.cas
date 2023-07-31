@@ -2,15 +2,15 @@
 / TELEMAC2D Version v8p4
 / STEADY HYDRODYNAMICS TRAINING for friction zones
 /---------------------------------------------------------------------
-/ steady2d-zonal-ks.cas
+/ steady2d-zonal-ID.cas
 /------------------------------------------------------------------
 /			COMPUTATION ENVIRONMENT
 /------------------------------------------------------------------
 TITLE : '2d steady with (Strickler) friction zones'
 /
 BOUNDARY CONDITIONS FILE : boundaries.cli
-GEOMETRY FILE            : qgismesh-friction.slf
-RESULTS FILE             : r2dsteady-ks-zonal.slf
+GEOMETRY FILE            : qgismesh-frictionIDs.slf
+RESULTS FILE             : r2dsteady-zonal-fric-ID.slf
 /
 MASS-BALANCE : YES / activates mass balance printouts - does not enforce mass balance
 VARIABLES FOR GRAPHIC PRINTOUTS : 'U,V,B,Q,F,H,W' / add K for tke, W for friction coefficient
@@ -91,12 +91,12 @@ VELOCITY PROFILES : 4;1
 / Friction at the bed
 FRICTION DATA : YES / default is NO
 FRICTION DATA FILE : 'friction.tbl'
-MAXIMIM NUMBER OF FRICTION DOMAINS : 20 / default is 10
+MAXIMUM NUMBER OF FRICTION DOMAINS : 20 / default is 10
 LAW OF BOTTOM FRICTION : 3 / 3-Strickler
-FRICTION COEFFICIENT : 80 / not use with zonal friction
+/ FRICTION COEFFICIENT : 80 / not use with zonal friction
 / Friction at the boundaries
-LAW OF FRICTION ON LATERAL BOUNDARIES : 3 / stickler
-ROUGHNESS COEFFICIENT OF BOUNDARIES : 33 / Roughness coefficient
+LAW OF FRICTION ON LATERAL BOUNDARIES : 4 / stickler
+ROUGHNESS COEFFICIENT OF BOUNDARIES : 0.03 / Roughness coefficient
 /
 / INITIAL CONDITIONS
 / ------------------------------------------------------------------

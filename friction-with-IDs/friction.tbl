@@ -11,7 +11,7 @@
 *    LOGW : Log Wall  law       (1 value  : rB) 
 *    COWH : Colebrook-White law (2 values : rB, nDef) 
 * 
-*  no             : Nummer des Materialbereichs 
+*  no             : FRIC_ID assigned to the SLF mesh
 * 
 *  Riverbed
 *  ------------- 
